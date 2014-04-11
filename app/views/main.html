@@ -1,0 +1,86 @@
+<div ng-controller="MainCtrl" class="row">
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 sidebar">
+        <div ng-show="!loaded">
+            loading...
+        </div>
+
+        <div ng-show="loaded" class="loaded">
+            <div class="whoAreU" ng-show="anonymous()">
+                <h1>你是?</h1>
+            </div>
+            <h1 ng-show="!anonymous()" class="hello">
+                {{'HELLO, '}}{{user}}{{uid}}
+            </h1>
+
+            <div ng-show="!locationMissing()" class="editBtn">
+                <button class="btn" ng-class="editBtnClass()" ng-click="switchEditMode()">{{editBtn()}}</button>
+                <p ng-show="!anonymous() && editMode">点击地图，修改位置</p>
+            </div>
+
+            <form class="form" role="form" ng-show="anonymous()">
+                <div class="form-group">
+                    <div>
+                        <input type="text" class="form-control" id="user" ng-model="user" placeholder="欢迎四班的同学们">
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label for="uid" class="col-sm-2 control-label">学号：</label>-->
+                <!--<div class="col-sm-10">-->
+                <!--<input type="number" class="form-control" id="uid" placeholder="不记得可问cat君" ng-model="uid" min="1" max="58">-->
+                <!--</div>-->
+                <!--</div>-->
+                <button class="btn btn-success pull-right" ng-click="addUser()">
+                    <span class="glyphicon glyphicon-ok"></span>确定
+                </button>
+            </form>
+
+            <h5 class="mask" ng-show="!anonymous() && locationMissing()">
+                点击地图，分享位置
+            </h5>
+
+            <div ng-if="!anonymous() && !locationMissing() && !isAlone()" class="tab">
+                <h4>>离你最近的同学</h4>
+
+                <p>
+                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance' | limitTo:6 ">
+                        {{classmate.user}} : {{classmate.distance | meters}}.&nbsp;&nbsp;
+                    </span>
+                </p>
+            </div>
+
+            <div ng-if="!anonymous() && !locationMissing() && !isAlone()" class="tab">
+                <h4>>离你最远的同学</h4>
+
+                <p>
+                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance':true | limitTo:6">
+                        {{classmate.user}} : {{classmate.distance | meters}}.&nbsp;&nbsp;
+                    </span>
+                </p>
+            </div>
+
+            <div class="tab">
+                <h4>>已加入的同学们</h4>
+
+                <p>
+                    <span ng-repeat="classmate in class4 | orderByPriority | reverse">
+                         {{classmate.user}} |
+                    </span>
+                </p>
+            </div>
+            <div ng-if="!anonymous()">
+                <small>By Spencer#26 With ♥</small>
+                <button class="btn btn-default pull-right btn-sm"
+                        ng-click="logout()">
+                    不是{{user}}?
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 mapContainer">
+        <div id="map">
+        </div>
+    </div>
+
+</div>
