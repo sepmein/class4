@@ -114,7 +114,7 @@ $RECYCLE.BIN/
 node_modules/
 bower_components/
 *.log
-
+.tmp/
 build/
 dist/
 

@@ -10,7 +10,7 @@ angular.module('class4App')
 //            console.log('input', input);
             var userLocation = L.latLng(userRef.location);
             angular.forEach(input, function (value, index) {
-                if (value.$id !== userRef.$id) {
+                if (value.$id !== userRef.$id && angular.isArray(userRef.location)) {
                     value.distance = userLocation.distanceTo(L.latLng(value.location));
                 } else {
                     input.splice(index, 1);
