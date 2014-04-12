@@ -8,16 +8,18 @@ angular.module('class4App')
         return function (input, userRef) {
 //            console.log(userRef);
 //            console.log('input', input);
-            var userLocation = L.latLng(userRef.location);
+            var userLocation = L.latLng(userRef.location),
+                result = [];
             angular.forEach(input, function (value, index) {
-                if (value.$id !== userRef.$id && angular.isArray(userRef.location)) {
+                if (value.$id !== userRef.$id && angular.isArray(value.location)) {
                     value.distance = userLocation.distanceTo(L.latLng(value.location));
+                    result.push(value);
                 } else {
-                    input.splice(index, 1);
+                    //input.splice(index, 1);
                 }
             });
 //            console.log(returnArray);
-            return input;
+            return result;
         };
     })
     .filter('meters', function () {
