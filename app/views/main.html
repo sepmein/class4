@@ -63,9 +63,7 @@
                 <h4>>已加入的同学们</h4>
 
                 <p>
-                    <span ng-repeat="classmate in class4 | orderByPriority | reverse">
-                        &nbsp;{{classmate.user}} |
-                    </span>
+                    <span ng-repeat="classmate in class4 | orderByPriority | reverse">&nbsp;{{classmate.user}} |</span>
                 </p>
             </div>
             <div ng-if="!anonymous()">
