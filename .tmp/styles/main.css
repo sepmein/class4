@@ -143,3 +143,7 @@ div.container-fluid > div {
 #map {
   height: 100%;
 }
+
+.leaflet-popup-content {
+  text-align: center;
+}

@@ -151,12 +151,52 @@ angular.module('class4App')
 
             $scope.addMarker = function (key) {
                 if ($scope.class4[key].location) {
-                    var marker = L.marker($scope.class4[key].location)
-                        .addTo($scope.map)
-                        .bindPopup($scope.class4[key].user);
+                    var marker;
+                    if (key === $scope.id) {
+                        // if is him self, use red icon
+                        marker = L.marker($scope.class4[key].location,
+                            {
+                                zIndexOffset: 1000,
+                                icon: L.icon({
+                                    iconUrl: 'images/map-marker-red.png',
+                                    iconRetinaUrl: 'images/map-marker-red-retina.png',
+                                    iconSize: [42, 42],
+                                    iconAnchor: [21, 42],
+                                    shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow.png',
+                                    shadowRetinaUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow@2x.png',
+                                    shadowSize: [41, 41],
+                                    shadowAnchor: [12, 42]
+
+                                })
+                            });
+                        marker.bindPopup('<h6>你</h6>', {
+                            offset: L.point(2, -29)
+                        });
+                    } else {
+                        //else use default icon
+                        marker = L.marker($scope.class4[key].location,
+                            {
+                                icon: L.icon({
+                                    iconUrl: 'images/map-marker-default.png',
+                                    iconRetinaUrl: 'images/map-marker-default-retina.png',
+                                    iconSize: [42, 42],
+                                    iconAnchor: [21, 42],
+                                    shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow.png',
+                                    shadowRetinaUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow@2x.png',
+                                    shadowSize: [41, 41],
+                                    shadowAnchor: [12, 42]
+                                })
+                            });
+                        marker.bindPopup('<h6>' + $scope.class4[key].user + '</h6>', {
+                            offset: L.point(2, -29)
+                        });
+                    }
+
+                    marker.addTo($scope.map);
                     $scope.markers.push({
                         id: key,
-                        marker: marker
+                        marker: marker,
+                        location: $scope.class4[key].location
                     });
                 }
             };
