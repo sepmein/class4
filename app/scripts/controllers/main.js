@@ -163,7 +163,6 @@ angular.module('class4App')
                                     iconSize: [42, 42],
                                     iconAnchor: [21, 42],
                                     shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow.png',
-                                    shadowRetinaUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow@2x.png',
                                     shadowSize: [41, 41],
                                     shadowAnchor: [12, 42]
 
@@ -182,7 +181,6 @@ angular.module('class4App')
                                     iconSize: [42, 42],
                                     iconAnchor: [21, 42],
                                     shadowUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow.png',
-                                    shadowRetinaUrl: 'http://cdn.leafletjs.com/leaflet-0.7.2/images/marker-shadow@2x.png',
                                     shadowSize: [41, 41],
                                     shadowAnchor: [12, 42]
                                 })
