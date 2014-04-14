@@ -233,4 +233,21 @@ angular.module('class4App')
                     key.marker.update();
                 });
             };
+
+            $scope.goToPerson = function (id) {
+                console.log(id);
+                angular.forEach($scope.markers, function (value) {
+                    if (value.id === id) {
+//                        TODO: the animation of L.setView method is really bad
+//                        center map
+//                        $scope.map.setView(new L.LatLng(value.location[0], value.location[1]), 11,{
+//                            animate: true
+//                        });
+                        //marker popup
+                        value.marker.togglePopup();
+
+                    }
+                });
+
+            };
         }]);

@@ -43,8 +43,9 @@
                 <h4>>离你最近的同学</h4>
 
                 <p>
-                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance' | limitTo:6 ">
-                        {{classmate.user}} : {{classmate.distance | meters}}.&nbsp;&nbsp;
+                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance' | limitTo:6 "
+                          ng-click="goToPerson(classmate.$id)">
+                        <span class="user">{{classmate.user}}</span> :{{classmate.distance | meters}}.&nbsp;&nbsp;
                     </span>
                 </p>
             </div>
@@ -53,8 +54,9 @@
                 <h4>>离你最远的同学</h4>
 
                 <p>
-                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance':true | limitTo:6">
-                        {{classmate.user}} : {{classmate.distance | meters}}.&nbsp;&nbsp;
+                    <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance':true | limitTo:6"
+                          ng-click="goToPerson(classmate.$id)">
+                        <span class="user">{{classmate.user}}</span> :{{classmate.distance | meters}}.&nbsp;&nbsp;
                     </span>
                 </p>
             </div>
@@ -63,7 +65,10 @@
                 <h4>>已加入的同学们</h4>
 
                 <p>
-                    <span ng-repeat="classmate in class4 | orderByPriority | reverse">&nbsp;{{classmate.user}} |</span>
+                    <span ng-repeat="classmate in class4 | orderByPriority | reverse"
+                          ng-click="goToPerson(classmate.$id)">
+                        <span class="user">{{classmate.user}}</span> |
+                    </span>
                 </p>
             </div>
             <div ng-if="!anonymous()">
