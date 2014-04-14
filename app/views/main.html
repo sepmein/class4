@@ -45,7 +45,7 @@
                 <p>
                     <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance' | limitTo:6 "
                           ng-click="goToPerson(classmate.$id)">
-                        <span class="user">{{classmate.user}}</span> :{{classmate.distance | meters}}.&nbsp;&nbsp;
+                        <span class="user">{{classmate.user}}</span> : {{classmate.distance | meters}}.&nbsp;&nbsp;
                     </span>
                 </p>
             </div>
@@ -56,7 +56,7 @@
                 <p>
                     <span ng-repeat="classmate in class4 | orderByPriority | computeDistance:userRef | orderBy:'distance':true | limitTo:6"
                           ng-click="goToPerson(classmate.$id)">
-                        <span class="user">{{classmate.user}}</span> :{{classmate.distance | meters}}.&nbsp;&nbsp;
+                        <span class="user">{{classmate.user}}</span> : {{classmate.distance | meters}}.&nbsp;&nbsp;
                     </span>
                 </p>
             </div>
